@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="hi-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quarterly Exam — Poori Copy Check ✔</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f3e8;
+    --paper-line:#c3d3ea;
+    --margin-red:#d6534a;
+    --ink:#1d2b4f;
+    --ink-soft:#3a4a72;
+    --pen-red:#b3271e;
+    --pen-red-soft:#fdeceb;
+    --gold:#c98a1e;
+    --gold-soft:#fbf0da;
+    --green:#3f7d5c;
+    --green-soft:#e9f3ec;
+    --card:#fffdf6;
+    --shadow: 0 1px 0 rgba(29,43,79,0.06), 0 8px 24px -12px rgba(29,43,79,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Lora', serif;
+    color:var(--ink);
+    background:
+      repeating-linear-gradient(var(--paper) 0 39px, var(--paper-line) 39px 40px),
+      var(--paper);
+    background-attachment:local;
+    line-height:1.65;
+  }
+  .margin-rule{
+    position:fixed; top:0; bottom:0; left:64px; width:2px;
+    background:var(--margin-red); opacity:.55; z-index:0;
+  }
+  @media (max-width:700px){ .margin-rule{left:28px;} }
+
+  .wrap{ max-width:880px; margin:0 auto; padding: 40px 40px 120px 96px; position:relative; z-index:1;}
+  @media (max-width:700px){ .wrap{ padding: 28px 18px 100px 44px;} }
+
+  header.top{
+    margin-bottom: 36px;
+  }
+  .stamp{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Kalam', cursive; font-weight:700;
+    color:var(--green); border:2.5px solid var(--green);
+    padding:6px 14px; border-radius:6px; transform:rotate(-3deg);
+    font-size:1.05rem; background:var(--green-soft);
+  }
+  h1.title{
+    font-family:'Poppins', sans-serif; font-weight:800;
+    font-size:clamp(1.6rem, 4vw, 2.4rem);
+    margin: 18px 0 6px; letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .sub{ color:var(--ink-soft); font-size:1.02rem; margin-bottom: 4px;}
+  .meta{
+    margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .pill{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    background:var(--gold-soft); color:#7a5510; border:1px solid #e9d19b;
+    padding:4px 10px; border-radius:99px;
+  }
+
+  .intro-note{
+    font-family:'Kalam', cursive; font-size:1.15rem; color:var(--pen-red);
+    background:var(--pen-red-soft); border:1.5px dashed var(--pen-red);
+    padding:16px 18px; border-radius:10px; margin: 26px 0 40px;
+    transform:rotate(-0.4deg);
+  }
+  .intro-note b{color:var(--pen-red);}
+
+  section.qgroup{ margin-bottom:56px; }
+  .qgroup-head{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:18px;
+    border-bottom:3px solid var(--ink); padding-bottom:8px;
+  }
+  .qgroup-head .num{
+    font-family:'Poppins',sans-serif; font-weight:800; font-size:1.9rem;
+    color:var(--ink);
+  }
+  .qgroup-head .lbl{
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1.15rem;
+    color:var(--ink-soft);
+  }
+  .qgroup-head .marks{
+    margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:0.82rem;
+    color:var(--ink-soft); background:#eef1fb; padding:3px 9px; border-radius:6px;
+  }
+
+  .mcq-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;}
+  .card{
+    background:var(--card); border:1px solid #e7dfc8; border-radius:12px;
+    box-shadow:var(--shadow); padding:20px 22px; margin-bottom:22px;
+  }
+  .card h3{
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1.02rem;
+    margin:0 0 10px; color:var(--ink);
+  }
+  .qtext{
+    font-style:italic; color:var(--ink-soft); font-size:0.98rem;
+    background:#f1f1e4; border-left:3px solid var(--gold);
+    padding:8px 12px; margin:0 0 14px; border-radius:0 6px 6px 0;
+  }
+  .steps{ margin:0; padding-left:0; list-style:none;}
+  .steps li{
+    display:flex; gap:10px; margin-bottom:9px; align-items:flex-start;
+  }
+  .steps li .dot{
+    flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:#eef1fb; color:var(--ink-soft); font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; display:flex; align-items:center; justify-content:center;
+    margin-top:2px; font-weight:600;
+  }
+  .math{ font-family:'JetBrains Mono',monospace; font-size:0.95rem; color:var(--ink);}
+
+  .answer-box{
+    margin-top:14px; display:flex; align-items:center; gap:10px;
+    background:var(--green-soft); border:1.5px solid #b9dcc6;
+    padding:10px 16px; border-radius:8px;
+  }
+  .answer-box .tick{
+    font-size:1.3rem; color:var(--green);
+  }
+  .answer-box b{ font-family:'Poppins',sans-serif; color:var(--green);}
+
+  .mcq-ans{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--green-soft); color:var(--green); border:1px solid #b9dcc6;
+    padding:5px 12px; border-radius:99px; font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:0.85rem; margin-top:4px;
+  }
+
+  .note-red{
+    font-family:'Kalam', cursive; color:var(--pen-red);
+    background:var(--pen-red-soft); border:1.5px dashed var(--pen-red);
+    padding:10px 14px; border-radius:8px; margin-top:12px; font-size:1.02rem;
+    transform:rotate(-0.3deg);
+  }
+  .note-flag{
+    font-family:'Kalam', cursive; color:#8a6300;
+    background:var(--gold-soft); border:1.5px dashed var(--gold);
+    padding:10px 14px; border-radius:8px; margin-top:12px; font-size:1.02rem;
+  }
+
+  .frac{ display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; margin:0 3px; font-size:0.92em; line-height:1.05;}
+  .frac .num, .frac .den{ display:block; padding:0 3px;}
+  .frac .num{ border-bottom:1.4px solid currentColor;}
+
+  .final{
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:1.05rem;
+  }
+
+  .divider-word{
+    text-align:center; font-family:'Kalam',cursive; color:#9aa6c4;
+    font-size:0.95rem; margin:34px 0; position:relative;
+  }
+  .divider-word::before, .divider-word::after{
+    content:""; position:absolute; top:50%; width:38%; height:1px; background:#c7cfe6;
+  }
+  .divider-word::before{ left:0;} .divider-word::after{ right:0;}
+
+  footer{
+    margin-top:60px; padding-top:20px; border-top:2px solid var(--ink);
+    font-family:'Kalam',cursive; color:var(--ink-soft); font-size:1.05rem;
+  }
+</style>
+</head>
+<body>
+<div class="margin-rule"></div>
+<div class="wrap">
+
+  <header class="top">
+    <span class="stamp">✔ Checked &amp; Explained</span>
+    <h1 class="title">John Nave Sr. Sec. School — Quarterly Paper, Class 9 Maths</h1>
+    <div class="sub">Har sawaal ka pura solution — jaise bilkul shuru se, step-by-step samjhaya gaya ho. Koi shortcut nahi, koi cheat nahi.</div>
+    <div class="meta">
+      <span class="pill">M.M. 50</span>
+      <span class="pill">Q1 MCQ · Q2 short · Q3 long · Q4 choice</span>
+      <span class="pill">Mode: Hinglish teaching</span>
+    </div>
+  </header>
+
+  <div class="intro-note">
+    ✍️ Ek baat honestly bata deta hoon: teri copy ke side mein jo pencil se rough work hai, usme <b>do jagah answer galat</b> aa gaya hai (Q3-b aur Q3-c). Maine wahin pe surkh pen se sahi tareeka dikhaya hai — cheat nahi karunga, jo galat hai wo galat bolunga, tabhi seekhega. Aur kuch jagah paper ka print/photo thoda unclear hai (Q1.1, Q2-b, Q3-d) — wahan maine apni best-guess assumption likh di hai aur clearly bata diya hai, tu apne asli paper se ek baar match kar lena.
+  </div>
+
+  <!-- Q1 -->
+  <section class="qgroup" id="q1">
+    <div class="qgroup-head">
+      <span class="num">Q.1</span>
+      <span class="lbl">Multiple Choice Questions</span>
+      <span class="marks">2 × 5 = 10</span>
+    </div>
+
+    <div class="mcq-grid">
+
+      <div class="card">
+        <h3>1. Factor of (x−1) − (x²−1)</h3>
+        <div class="qtext">Options: (a) x²−1 &nbsp;(b) x+1 &nbsp;(c) x+1 &nbsp;(d) x+4</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Pehle x²−1 ko factor karo — yeh ek identity hai: <span class="math">a²−b² = (a−b)(a+b)</span>. Toh x²−1 = (x−1)(x+1).</span></li>
+          <li><span class="dot">2</span><span>Ab expression bano: <span class="math">(x−1) − (x−1)(x+1)</span></span></li>
+          <li><span class="dot">3</span><span>Dono terms me common factor <b>(x−1)</b> hai — usko bahar nikaalo:<br><span class="math">(x−1)[1 − (x+1)] = (x−1)(1−x−1) = (x−1)(−x)</span></span></li>
+          <li><span class="dot">4</span><span>Toh poora expression = <span class="math">−x(x−1)</span>. Iske do factors hain: <b>x</b> aur <b>(x−1)</b>.</span></li>
+        </ul>
+        <div class="note-flag">🚩 Tere options me (b) aur (c) dono "x+1" print hue hain — yeh photo/OCR ka gadbad lagta hai, ek option asal me shaayad "x − 1" hoga. Sahi answer <b>x − 1</b> hai — apne paper me jo option "x−1" ho, wahi tick karna (a) aur (d) galat hain kyunki wo factor hi nahi hain.</div>
+      </div>
+
+      <div class="card">
+        <h3>2. Sum jispe 2 saal, 5% CI se, byaj ₹164 aata hai</h3>
+        <div class="qtext">(a) ₹1600 (b) ₹1500 (c) ₹1400 (d) ₹1700</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Compound Interest ka formula: <span class="math">A = P(1 + r/100)ⁿ</span>, aur <span class="math">CI = A − P</span></span></li>
+          <li><span class="dot">2</span><span>Yahan r=5%, n=2. Toh <span class="math">A = P(1.05)²= P × 1.1025</span></span></li>
+          <li><span class="dot">3</span><span><span class="math">CI = P(1.1025 − 1) = 0.1025 P = 164</span></span></li>
+          <li><span class="dot">4</span><span>Toh <span class="math">P = 164 ÷ 0.1025 = 1600</span></span></li>
+        </ul>
+        <div class="mcq-ans">✓ (a) ₹1600</div>
+      </div>
+
+      <div class="card">
+        <h3>3. Irrational number kaunsa hai</h3>
+        <div class="qtext">(a) √2a (b) √441 (c) 0.5948 (d) 5.3̄1̄8̄</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Rule yaad rakh: koi bhi number jo <b>terminate</b> ho jaaye ya <b>repeat</b> (bar) kare — wo rational hota hai. Jo kabhi terminate/repeat nahi karta — irrational.</span></li>
+          <li><span class="dot">2</span><span>√441 = 21 → poora square number, so ek clean whole number = rational.</span></li>
+          <li><span class="dot">3</span><span>0.5948 → yahin pe khatam ho gaya (terminating decimal) = rational.</span></li>
+          <li><span class="dot">4</span><span>5.3̄1̄8̄ → bar hai matlab repeat ho raha hai = rational (koi bhi repeating decimal p/q me likha ja sakta hai).</span></li>
+          <li><span class="dot">5</span><span>√2 (ya √2 se bana koi surd jo perfect square na ho) kabhi terminate/repeat nahi karta = irrational.</span></li>
+        </ul>
+        <div class="mcq-ans">✓ (a) √2a — kyunki baaki teeno rational nikal gaye</div>
+      </div>
+
+      <div class="card">
+        <h3>4. (2 − 3x)(5 − 2x) me x ka coefficient</h3>
+        <div class="qtext">(a) 19 (b) −19 (c) 15 (d) 6</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Dono brackets ko multiply karo (har term ko har term se):</span></li>
+          <li><span class="dot">2</span><span><span class="math">2×5=10, &nbsp; 2×(−2x)=−4x, &nbsp; (−3x)×5=−15x, &nbsp; (−3x)×(−2x)=6x²</span></span></li>
+          <li><span class="dot">3</span><span>Sab jodo: <span class="math">10 − 4x − 15x + 6x² = 6x² − 19x + 10</span></span></li>
+          <li><span class="dot">4</span><span>x ka coefficient (x ke saamne ka number) = −19</span></li>
+        </ul>
+        <div class="mcq-ans">✓ (b) −19</div>
+      </div>
+
+      <div class="card">
+        <h3>5. (x − 1/x)(x + 1/x)(x² + 1/x²) ka product</h3>
+        <div class="qtext">(a) x⁴+1/x⁴ (b) x³+1/x³−2 (c) x⁴−1/x⁴ (d) x²+1/x²+2</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Pehle do brackets uthao — yeh <span class="math">(a−b)(a+b)=a²−b²</span> pattern hai:<br><span class="math">(x−1/x)(x+1/x) = x² − 1/x²</span></span></li>
+          <li><span class="dot">2</span><span>Ab isko third bracket se multiply karo — phir se <span class="math">a²−b²</span> pattern:<br><span class="math">(x²−1/x²)(x²+1/x²) = x⁴ − 1/x⁴</span></span></li>
+        </ul>
+        <div class="mcq-ans">✓ (c) x⁴ − 1/x⁴</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider-word">— Q.2 shuru —</div>
+
+  <!-- Q2 -->
+  <section class="qgroup" id="q2">
+    <div class="qgroup-head">
+      <span class="num">Q.2</span>
+      <span class="lbl">Solve all parts</span>
+      <span class="marks">3 × 5 = 15</span>
+    </div>
+
+    <div class="card">
+      <h3>(a) ½ aur ¾ ke beech ek rational number dhoondo</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Do numbers ke exactly beech me jo number hota hai wo unka <b>average (mean)</b> hota hai: <span class="math">(a+b)/2</span></span></li>
+        <li><span class="dot">2</span><span>Pehle dono ka common denominator banao: ½ = 2/4, aur ¾ already hai.</span></li>
+        <li><span class="dot">3</span><span><span class="math">(2/4 + 3/4)/2 = (5/4)/2 = 5/8</span></span></li>
+        <li><span class="dot">4</span><span>Check kar le: 5/8 = 0.625, jo 0.5 aur 0.75 ke beech me hi hai ✓</span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: 5/8</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(b) Express 6.4̄6̄ (repeating) ko p/q form me likho</h3>
+      <div class="note-flag">🚩 Photo me yeh number thoda unclear print hua hai. Maine assume kiya ki number hai <b>6.4646464...</b> (yaani "46" baar-baar repeat ho raha hai) — kyunki isse answer bahut clean nikalta hai. Apne paper me overline (bar) exactly kis digit ke upar hai, wo ek baar check kar lena.</div>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Repeating decimal ko p/q me convert karne ka trick: pehle usko x maan lo.<br><span class="math">Let x = 6.464646...</span></span></li>
+        <li><span class="dot">2</span><span>Jitne digits repeat ho rahe hain (yahan 2 digits: "46"), utni jagah decimal ko right shift karo — matlab 100 se multiply karo:<br><span class="math">100x = 646.464646...</span></span></li>
+        <li><span class="dot">3</span><span>Ab dono ko subtract karo — repeating part cancel ho jaayega:<br><span class="math">100x − x = 646.4646... − 6.4646...</span><br><span class="math">99x = 640</span></span></li>
+        <li><span class="dot">4</span><span><span class="math">x = 640/99</span></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: 640⁄99</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(c) ₹4913, 1½ saal me, 12½% CI half-yearly compounded — sum kya thi?</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span><b>Half-yearly</b> matlab interest saal me 2 baar lagta hai. Toh rate aadha ho jaata hai aur time double:<br>Half-yearly rate = 12.5% ÷ 2 = 6.25%, aur time = 1.5 × 2 = 3 half-years.</span></li>
+        <li><span class="dot">2</span><span>6.25% ko fraction me likho: <span class="math">6.25/100 = 1/16</span></span></li>
+        <li><span class="dot">3</span><span>Formula: <span class="math">A = P(1 + 1/16)³ = P × (17/16)³</span></span></li>
+        <li><span class="dot">4</span><span>17³ = 4913 aur 16³ = 4096 (ye yaad rakhne wali cheez nahi, calculate kar sakte ho: 17×17=289, 289×17=4913)</span></li>
+        <li><span class="dot">5</span><span>Toh <span class="math">4913 = P × 4913/4096</span> → dono taraf 4913 se cancel hota hai:<br><span class="math">P = 4096</span></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: ₹4096</span></div>
+      <div class="note-flag">💡 Notice kiya? 17³ exactly 4913 nikla — paper banane wale ne jaan-boojh kar numbers aise choose kiye taaki cancel ho jaaye. Exam me aise "clean number" dikhe toh samajh jaana, tareeka sahi chal raha hai.</div>
+    </div>
+
+    <div class="card">
+      <h3>(d) Agar (x + 1/x) = 3, toh (x² + 1/x²) aur (x⁴ + 1/x⁴) nikaalo</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Identity yaad rakho: <span class="math">(a+b)² = a² + 2ab + b²</span></span></li>
+        <li><span class="dot">2</span><span>Yahan a=x, b=1/x. Toh <span class="math">(x+1/x)² = x² + 2·x·(1/x) + 1/x² = x² + 2 + 1/x²</span></span></li>
+        <li><span class="dot">3</span><span>Given hai (x+1/x)=3, toh dono side square karo: <span class="math">3² = x² + 2 + 1/x²</span> → <span class="math">9 = x²+1/x² + 2</span></span></li>
+        <li><span class="dot">4</span><span><b>x² + 1/x² = 9 − 2 = 7</b></span></li>
+        <li><span class="dot">5</span><span>Ab x⁴+1/x⁴ ke liye same trick dobara: <span class="math">(x²+1/x²)² = x⁴ + 2 + 1/x⁴</span></span></li>
+        <li><span class="dot">6</span><span><span class="math">7² = x⁴+1/x⁴ + 2</span> → <span class="math">49 = x⁴+1/x⁴ + 2</span></span></li>
+        <li><span class="dot">7</span><span><b>x⁴ + 1/x⁴ = 49 − 2 = 47</b></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: x²+1/x² = 7, aur x⁴+1/x⁴ = 47</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(e) Factorise: −25 + b²/64</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Pehle order thoda seedha karo: <span class="math">b²/64 − 25</span></span></li>
+        <li><span class="dot">2</span><span>Dono terms ko "square" ki form me socho:<br><span class="math">b²/64 = (b/8)²</span> &nbsp;aur&nbsp; <span class="math">25 = 5²</span></span></li>
+        <li><span class="dot">3</span><span>Ab yeh <span class="math">a² − b²</span> wala pattern ban gaya (identity: <span class="math">a²−b² = (a−b)(a+b)</span>), jahan a = b/8, b = 5</span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: (b/8 − 5)(b/8 + 5)</span></div>
+    </div>
+  </section>
+
+  <div class="divider-word">— Q.3 shuru —</div>
+
+  <!-- Q3 -->
+  <section class="qgroup" id="q3">
+    <div class="qgroup-head">
+      <span class="num">Q.3</span>
+      <span class="lbl">Solve any five parts</span>
+      <span class="marks">4 × 5 = 20</span>
+    </div>
+
+    <div class="card">
+      <h3>(a) Factorise: 49x⁴ + 168x²y² + 144y⁴</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Jab bhi teen terms ho aur pehla-aakhri dono perfect squares lage, <b>perfect square trinomial</b> check karo: <span class="math">a² + 2ab + b² = (a+b)²</span></span></li>
+        <li><span class="dot">2</span><span>49x⁴ = (7x²)², aur 144y⁴ = (12y²)² — dono perfect squares hain ✓</span></li>
+        <li><span class="dot">3</span><span>Ab middle term check karo: agar a=7x², b=12y², toh <span class="math">2ab = 2 × 7x² × 12y² = 168x²y²</span> — exactly match ho gaya! ✓</span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: (7x² + 12y²)²</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(b) (3+√2)/(3−√2) ko a + b√2 form me likho, a aur b nikaalo</h3>
+      <div class="note-red">✍️ Teri copy me answer "11.6√2" likha hai — yeh galat hai. Neeche sahi tareeka dekh:</div>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Jab denominator me surd ho (√2), usko hataane ke liye <b>rationalize</b> karte hain — numerator aur denominator dono ko denominator ke <b>conjugate</b> se multiply karo. Conjugate of (3−√2) hai (3+√2).</span></li>
+        <li><span class="dot">2</span><span><span class="math">(3+√2)/(3−√2) × (3+√2)/(3+√2)</span></span></li>
+        <li><span class="dot">3</span><span>Denominator: <span class="math">(3−√2)(3+√2) = 3² − (√2)² = 9 − 2 = 7</span> (a²−b² identity)</span></li>
+        <li><span class="dot">4</span><span>Numerator: <span class="math">(3+√2)(3+√2) = (3+√2)²= 3² + 2×3×√2 + (√2)² = 9 + 6√2 + 2 = 11 + 6√2</span></span></li>
+        <li><span class="dot">5</span><span>Toh poora expression = <span class="math">(11+6√2)/7 = 11/7 + (6/7)√2</span></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: a = 11/7, &nbsp; b = 6/7</span></div>
+      <div class="note-flag">💡 Yaad rakh: a+b√2 form me a aur b hamesha rational numbers hote hain (fractions chalenge), decimal "11.6" jaisa kuch nahi hota — isliye jab bhi surd-wala answer decimal me aaye, samajh jaana kahin calculation me mistake hai.</div>
+    </div>
+
+    <div class="card">
+      <h3>(c) ₹5,00,000 ka flat, 10% p.a. depreciate ho raha — kितने saal me value ₹3,64,500 rah jaayegi?</h3>
+      <div class="note-red">✍️ Teri copy me "6 years" likha hai — yeh bhi galat hai. Sahi answer 3 saal hai, dekh kaise:</div>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Depreciation matlab value <b>ghat</b> rahi hai, toh formula me minus lagega:<br><span class="math">V = P(1 − r/100)ⁿ</span></span></li>
+        <li><span class="dot">2</span><span>Values daalo: <span class="math">3,64,500 = 5,00,000 × (1 − 10/100)ⁿ = 5,00,000 × (0.9)ⁿ</span></span></li>
+        <li><span class="dot">3</span><span>Dono side 5,00,000 se divide karo: <span class="math">3,64,500 ÷ 5,00,000 = 0.729 = (0.9)ⁿ</span></span></li>
+        <li><span class="dot">4</span><span>Ab (0.9) ko khud se multiply karte jao jab tak 0.729 na mile:<br><span class="math">0.9¹=0.9, &nbsp; 0.9²=0.81, &nbsp; 0.9³=0.729</span> ← match!</span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: n = 3 saal</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(d) a² + b² + c² ka value, agar a+b+c=17 aur ab+bc+ca = ?</h3>
+      <div class="note-flag">🚩 Photo me is sawaal ka doosra data (ab+bc+ca ki value) print/crop nahi hua — sirf "ab+bc+ca" likha dikh raha hai, koi number uske saath nahi. Please apne paper se wo missing number check karke bata dena, main turant final answer nikaal dunga. Tab tak, poora method samjha deta hoon taaki tu khud number aate hi solve kar sake:</div>
+        <ul class="steps">
+          <li><span class="dot">1</span><span>Identity yaad rakho: <span class="math">(a+b+c)² = a²+b²+c² + 2(ab+bc+ca)</span></span></li>
+          <li><span class="dot">2</span><span>Isko rearrange kar do: <span class="math">a²+b²+c² = (a+b+c)² − 2(ab+bc+ca)</span></span></li>
+          <li><span class="dot">3</span><span>a+b+c=17 daalo: <span class="math">(17)² = 289</span></span></li>
+          <li><span class="dot">4</span><span>Jaise hi tujhe ab+bc+ca ki value mile, use 2 se multiply karke 289 me se ghata dena — final answer aa jaayega. <br><i>Example (agar maan lo ab+bc+ca = 116 hota): 289 − 2(116) = 289−232 = 57.</i></span></li>
+        </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Formula ready hai: a²+b²+c² = 289 − 2(ab+bc+ca) — number bhejte hi answer final ho jaayega</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(f) District me 64000 log, population 2½% p.a. badh rahi — 3 saal baad kitne honge?</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Population <b>badh</b> rahi hai toh plus wala formula: <span class="math">A = P(1 + r/100)ⁿ</span></span></li>
+        <li><span class="dot">2</span><span>P=64000, r=2.5%=<span class="frac"><span class="num">1</span><span class="den">40</span></span>, n=3. Toh <span class="math">A = 64000 × (41/40)³</span></span></li>
+        <li><span class="dot">3</span><span>41³ = 41×41×41 = 68921, aur 40³ = 64000</span></li>
+        <li><span class="dot">4</span><span><span class="math">A = 64000 × 68921/64000</span> — 64000 cancel ho jaata hai dono taraf se!</span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: 68,921 inhabitants</span></div>
+      <div class="note-flag">💡 Fir se dekh — numbers itni cleanly cancel hui kyunki 2.5% = 1/40 hota hai, aur 41³/40³ exact whole number aata hai. Jab bhi percentage "clean fraction" ban rahi ho (jaise 2.5%, 5%, 12.5%, 25%), turant socho konsa cube/square yaad hai.</span></div>
+    </div>
+  </section>
+
+  <div class="divider-word">— Q.4 shuru —</div>
+
+  <!-- Q4 -->
+  <section class="qgroup" id="q4">
+    <div class="qgroup-head">
+      <span class="num">Q.4</span>
+      <span class="lbl">Solve any one part (exam me sirf ek karna hai, yahan dono samjha raha hoon)</span>
+      <span class="marks">1 × 5 = 5</span>
+    </div>
+
+    <div class="card">
+      <h3>(a) Simplify: 6√2/(√3+√6) − 4√3/(√6+√2) + 2√6/(√2+√3)</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Teeno terms ko alag-alag rationalize karenge — har denominator ke conjugate se multiply karke.</span></li>
+        <li><span class="dot">2</span><span><b>Term 1:</b> <span class="math">6√2/(√3+√6)</span> ko <span class="math">(√6−√3)</span> se multiply karo:<br>Denominator: <span class="math">(√6)²−(√3)² = 6−3 = 3</span><br>Numerator: <span class="math">6√2(√6−√3) = 6√12 − 6√6 = 12√3 − 6√6</span> (kyunki √12=2√3)<br>Term 1 = <span class="math">(12√3−6√6)/3 = 4√3 − 2√6</span></span></li>
+        <li><span class="dot">3</span><span><b>Term 2:</b> <span class="math">4√3/(√6+√2)</span> ko <span class="math">(√6−√2)</span> se multiply karo:<br>Denominator: <span class="math">6−2=4</span><br>Numerator: <span class="math">4√3(√6−√2) = 4√18 − 4√6 = 12√2 − 4√6</span> (kyunki √18=3√2)<br>Term 2 = <span class="math">(12√2−4√6)/4 = 3√2 − √6</span></span></li>
+        <li><span class="dot">4</span><span><b>Term 3:</b> <span class="math">2√6/(√2+√3)</span> ko <span class="math">(√3−√2)</span> se multiply karo:<br>Denominator: <span class="math">3−2=1</span><br>Numerator: <span class="math">2√6(√3−√2) = 2√18 − 2√12 = 6√2 − 4√3</span><br>Term 3 = <span class="math">6√2 − 4√3</span></span></li>
+        <li><span class="dot">5</span><span>Ab jodo: <span class="math">Term1 − Term2 + Term3</span><br><span class="math">= (4√3−2√6) − (3√2−√6) + (6√2−4√3)</span></span></li>
+        <li><span class="dot">6</span><span>√3 wale: <span class="math">4√3 − 4√3 = 0</span><br>√6 wale: <span class="math">−2√6 + √6 = −√6</span><br>√2 wale: <span class="math">−3√2 + 6√2 = 3√2</span></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: 3√2 − √6</span></div>
+    </div>
+
+    <div class="card">
+      <h3>(b) x³ + 1/(125x³) nikaalo, agar x² + 1/(25x²) = 8⅗</h3>
+      <ul class="steps">
+        <li><span class="dot">1</span><span>Pehle 8⅗ ko improper fraction banao: <span class="math">8⅗ = 43/5</span></span></li>
+        <li><span class="dot">2</span><span>Trick: maan lo <span class="math">a = x</span> aur <span class="math">b = 1/(5x)</span>. Dekho kyun — <span class="math">b² = 1/(25x²)</span>, jo exactly given expression me hai! Aur <span class="math">b³ = 1/(125x³)</span>, jo exactly wahi hai jo humein chahiye.</span></li>
+        <li><span class="dot">3</span><span>Toh given: <span class="math">a² + b² = 43/5</span></span></li>
+        <li><span class="dot">4</span><span>Aur <span class="math">ab = x × 1/(5x) = 1/5</span> (x cancel ho gaya)</span></li>
+        <li><span class="dot">5</span><span>Ab identity use karo: <span class="math">(a+b)² = a²+2ab+b²</span><br><span class="math">(a+b)² = 43/5 + 2×(1/5) = 43/5 + 2/5 = 45/5 = 9</span></span></li>
+        <li><span class="dot">6</span><span>Toh <span class="math">a+b = √9 = 3</span></span></li>
+        <li><span class="dot">7</span><span>Ab humein a³+b³ chahiye. Identity: <span class="math">a³+b³ = (a+b)(a²−ab+b²)</span></span></li>
+        <li><span class="dot">8</span><span><span class="math">a²−ab+b² = (a²+b²) − ab = 43/5 − 1/5 = 42/5</span></span></li>
+        <li><span class="dot">9</span><span><span class="math">a³+b³ = 3 × 42/5 = 126/5</span></span></li>
+      </ul>
+      <div class="answer-box"><span class="tick">✔</span> <span class="final">Answer: 126/5 (= 25.2)</span></div>
+      <div class="note-flag">💡 Yeh question dikhne me daunting lagta hai, lekin trick yeh hai: jaise hi dekho "x² + 1/(kx²)" wala pattern given hai aur "x³ + 1/(mx³)" wala poochha ja raha hai, turant a=x, b=1/(√m · x) jaisa kuch treat karke a²+b² se shuru karo. Yeh ek bahut common exam trick hai.</div>
+    </div>
+  </section>
+
+  <footer>
+    Bas itna hi tha paper me. Revision karte waqt in identities ko baar-baar dohrana: (a±b)² , a²−b² , a³+b³ , CI/depreciation ke formula — inhi 4-5 cheezo se pura paper ban raha tha. All the best for half-yearly! 📘
+  </footer>
+
+</div>
+</body>
+</html>
